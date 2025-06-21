@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mobile Data Exploration: User Behavior, Sales Report, &amp; Specification Trend Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="official-post_files/libs/clipboard/clipboard.min.js"></script>
+<script src="official-post_files/libs/quarto-html/quarto.js"></script>
+<script src="official-post_files/libs/quarto-html/popper.min.js"></script>
+<script src="official-post_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="official-post_files/libs/quarto-html/anchor.min.js"></script>
+<link href="official-post_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="official-post_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="official-post_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="official-post_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="official-post_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mobile Data Exploration: User Behavior, Sales Report, &amp; Specification Trend Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="questions-of-interest" class="level2">
+<h2 class="anchored" data-anchor-id="questions-of-interest">Questions of Interest:</h2>
+<ul>
+<li><p>What are the top selling manufacturers for mobile devices in the World by total gross sales?</p></li>
+<li><p>What are trends in specifications of mobile devices over the years and how do they affect sales?</p></li>
+<li><p>What are some of the influences of mobile device usage in the United States and User Behavior?</p></li>
+</ul>
+<section id="other-questions-of-interest-unanswered" class="level3">
+<h3 class="anchored" data-anchor-id="other-questions-of-interest-unanswered">Other Questions of Interest: (Unanswered)</h3>
+<ul>
+<li>What phone sells the most per region, unit, and sales price-wise?</li>
+<li>What phone line leads in overall specs per these datasets?</li>
+<li>How does launch price and date affect sales amongst the top brands?</li>
+<li>Does weight have any influence in consumer trends or analysis?</li>
+<li>What launch price differences are present from these dataset?</li>
+<li>Are there any trends in screen size over the years?</li>
+<li>Do users with more apps installed spend more time on their phones?</li>
+<li>What are the behavior classes, which individuals are more susceptible to high screen usage?</li>
+<li>What ages are using the most screen on usage per day; is there a dominating phone model, os, and gender where this is more pronounced?</li>
+<li>If this were expanded, as well as the demographic more thoroughly represented, what could this dataset receive as a net change?</li>
+<li>From the second dataset, what are the optimal trends for devices that have been sold, manufactured and designed around the base core user experience? Are there indicators as to what influences a device to sell versus others that are moreso targeted as a niche device?</li>
+<li>Have user bases seen a decline over the years, expanded, or stabilized within the United States or World as a whole?</li>
+</ul>
+</section>
+</section>
+<section id="import-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="import-dependencies">Import Dependencies</h2>
+<div id="e64cc052" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="upload-files" class="level2">
+<h2 class="anchored" data-anchor-id="upload-files">Upload Files</h2>
+<div id="13f4ba5e" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="op">=</span> pd.read_csv(<span class="st">'mobile_sales_data.csv'</span>, encoding<span class="op">=</span><span class="st">'latin1'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_2 <span class="op">=</span> pd.read_csv(<span class="st">'Mobiles Dataset (2025).csv'</span>, encoding<span class="op">=</span><span class="st">'latin1'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df_3 <span class="op">=</span> pd.read_csv(<span class="st">'top 120 best-selling mobile phones.csv'</span>, encoding<span class="op">=</span><span class="st">'latin1'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df_4 <span class="op">=</span> pd.read_csv(<span class="st">'user_behavior_dataset.csv'</span>, encoding<span class="op">=</span><span class="st">'latin1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="data-exploration-of-the-4-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="data-exploration-of-the-4-datasets">Data Exploration of the (4) Datasets</h3>
+<div id="2b5ac94b" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mobile Sales Data Exploration #</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature importance, trends, and initial data analysis.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 16 features / columns, zero nulls!</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df_1.head()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df_1.describe()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>df_1.info()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>df_1.shape</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df_1.isnull().<span class="bu">sum</span>()</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df_1.isna().<span class="bu">sum</span>()</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>df_1.columns</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>df_1.dtypes</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Could Add $ to the Price Column...</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Price'</span>].describe()</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Price'</span>].value_counts()</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Price'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Price'</span>].head()</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Brand'</span>].describe()</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Brand'</span>].value_counts()</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Brand'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Brand'</span>].head()</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># df_1['Model'].describe()</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># df_1['Model'].value_counts()</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># df_1['Model'].unique().sum()</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># df_1['Model'].head()</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'RAM'</span>].describe()</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'RAM'</span>].value_counts()</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'RAM'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'RAM'</span>].head()</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Quantity Sold'</span>].describe()</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Quantity Sold'</span>].value_counts()</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Quantity Sold'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Quantity Sold'</span>].head()</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Where these reported in bulk or sold off to individual customers?</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Customer Location'</span>].describe()</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Customer Location'</span>].value_counts()</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Customer Location'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Customer Location'</span>].head()</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Dispatch Date'</span>].describe()</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Dispatch Date'</span>].value_counts()</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Dispatch Date'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Dispatch Date'</span>].head()</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="co"># What is the overall average, what trends are we seeing, what major companies are still 'ripping' off consumers?</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'SSD'</span>].describe()</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'SSD'</span>].value_counts()</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'SSD'</span>].head()</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'SSD'</span>].isna().<span class="bu">sum</span>()</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'SSD'</span>].isnull().<span class="bu">sum</span>()</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Which region sells more phones overall, which types, sales prices, conversions, if 'manufactured costs' were included, what margins are present?</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="co"># What recommendations would be placed for a market research analysis on the best 'emerging marketspace' for an Android Distributor?</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Region'</span>].describe()</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Region'</span>].value_counts()</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Region'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Region'</span>].head()</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="co">### What do these different columns display or relay in terms of initial first impressions and trends of mobile devices </span><span class="al">###</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="co"># What influence has weight had on devices, is there an average or assumed weight that is preferred?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 50000 entries, 0 to 49999
+Data columns (total 16 columns):
+ #   Column                   Non-Null Count  Dtype 
+---  ------                   --------------  ----- 
+ 0   Product                  50000 non-null  object
+ 1   Brand                    50000 non-null  object
+ 2   Product Code             50000 non-null  object
+ 3   Product Specification    50000 non-null  object
+ 4   Price                    50000 non-null  int64 
+ 5   Inward Date              50000 non-null  object
+ 6   Dispatch Date            50000 non-null  object
+ 7   Quantity Sold            50000 non-null  int64 
+ 8   Customer Name            50000 non-null  object
+ 9   Customer Location        50000 non-null  object
+ 10  Region                   50000 non-null  object
+ 11  Core Specification       25017 non-null  object
+ 12  Processor Specification  50000 non-null  object
+ 13  RAM                      50000 non-null  object
+ 14  ROM                      50000 non-null  object
+ 15  SSD                      25017 non-null  object
+dtypes: int64(2), object(14)
+memory usage: 6.1+ MB</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>0    Central
+1      South
+2    Central
+3      South
+4       East
+Name: Region, dtype: object</code></pre>
+</div>
+</div>
+<div id="92bc9299" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Company Name'</span>].describe()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Company Name'</span>].value_counts()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Company Name'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Company Name'</span>].head()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># I know the ASUS ROG Phone 7 has a 6,000 mAh Battery so this data might be invalidated.</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Battery Capacity'</span>].describe()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Battery Capacity'</span>].value_counts()</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Battery Capacity'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Battery Capacity'</span>].head()</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ALL RANGES</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Launched Price (USA)'</span>].describe()</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Launched Price (USA)'</span>].value_counts()</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Launched Price (USA)'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Launched Price (USA)'</span>].head()</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 2011 - 2025</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Launched Year'</span>].describe()</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Launched Year'</span>].head()</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># I know that there are many devices with 16gb or more of RAM, not sure if this is represented within the dataset.</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'RAM'</span>].describe()</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'RAM'</span>].value_counts()</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'RAM'</span>].unique().<span class="bu">sum</span>()</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'RAM'</span>].head()</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># the same applies here with screensize, however, more data exploration is needed...</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Screen Size'</span>].describe()</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># df_2['Screen Size'].value_counts()</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># df_2['Screen Size'].unique().sum()</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Screen Size'</span>].head()</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="co">### Exchange rate function to assess what the differences in prices actually are between the different countries.</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co"># exchange_rates = {</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">#     'USD': 1.0,</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co">#     'INR': 0.012,</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co">#     'GBP': 1.27,</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">#     'JPY': 0.0064</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co"># # Apply exchange rates</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co"># def convert_to_usd(row):</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="co">#     rate = exchange_rates.get(row['Currency'], 1.0)</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co">#     return round(row['Launch Price'] * rate, 2)</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="co"># # Add converted column</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="co"># df_2['Price in USD'] = df_2.apply(convert_to_usd, axis=1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>0    6.1 inches
+1    6.1 inches
+2    6.1 inches
+3    6.7 inches
+4    6.7 inches
+Name: Screen Size, dtype: object</code></pre>
+</div>
+</div>
+<div id="d9fca36c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Company Name</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Company Name'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Company Name Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'Company Name'</span>].describe())</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_2[<span class="st">'Company Name'</span>].value_counts().head())</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Battery Capacity</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Battery Capacity'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Battery Capacity Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'Battery Capacity'</span>].describe())</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_2[<span class="st">'Battery Capacity'</span>].value_counts().head())</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Launched Price (USA)</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Launched Price (USA)'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Launched Price Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'Launched Price (USA)'</span>].describe())</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_2[<span class="st">'Launched Price (USA)'</span>].value_counts().head())</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># RAM</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'RAM'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> RAM Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'RAM'</span>].describe())</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_2[<span class="st">'RAM'</span>].value_counts().head())</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Screen Size</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Screen Size'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📱 Screen Size Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'Screen Size'</span>].describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Company Name Stats:
+ count      930
+unique      19
+top       Oppo
+freq       129
+Name: Company Name, dtype: object
+Company Name
+Oppo       129
+Apple       97
+Honor       91
+Samsung     88
+Vivo        86
+Name: count, dtype: int64
+
+ Battery Capacity Stats:
+ count          930
+unique         147
+top       5,000mAh
+freq           197
+Name: Battery Capacity, dtype: object
+Battery Capacity
+5,000mAh    197
+5000mAh      96
+4,500mAh     46
+4500mAh      38
+5,200mAh     35
+Name: count, dtype: int64
+
+ Launched Price Stats:
+ count         930
+unique        107
+top       USD 499
+freq           44
+Name: Launched Price (USA), dtype: object
+Launched Price (USA)
+USD 499      44
+USD 899      43
+USD 299      43
+USD 1,099    43
+USD 399      42
+Name: count, dtype: int64
+
+ RAM Stats:
+ count     930
+unique     11
+top       8GB
+freq      308
+Name: RAM, dtype: object
+RAM
+8GB     308
+6GB     206
+12GB    193
+4GB     146
+3GB      34
+Name: count, dtype: int64
+
+📱 Screen Size Stats:
+ count            930
+unique            97
+top       6.7 inches
+freq             124
+Name: Screen Size, dtype: object</code></pre>
+</div>
+</div>
+<div id="cc62482c" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only 7 features within this entire dataset, however, showcases the reality of total units sold within a year as well as by manufacturer and model of the device.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df_3.describe()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df_3.info()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df_3[<span class="st">'Rank'</span>].head()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>df_3[<span class="st">'Rank'</span>].describe()</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>df_3[<span class="st">'Manufacturer'</span>].info()</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>df_3[<span class="st">'Manufacturer'</span>].describe()</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>df_3[<span class="st">'Units Sold (million )'</span>].describe()</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>df_3[<span class="st">'Units Sold (million )'</span>].head()</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>df_3[<span class="st">'Units Sold (million )'</span>].tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 120 entries, 0 to 119
+Data columns (total 7 columns):
+ #   Column                 Non-Null Count  Dtype  
+---  ------                 --------------  -----  
+ 0   Rank                   120 non-null    int64  
+ 1   Manufacturer           120 non-null    object 
+ 2   Model                  120 non-null    object 
+ 3   Form Factor            120 non-null    object 
+ 4   Smartphone?            120 non-null    bool   
+ 5   Year                   120 non-null    int64  
+ 6   Units Sold (million )  120 non-null    float64
+dtypes: bool(1), float64(1), int64(2), object(3)
+memory usage: 5.9+ KB
+&lt;class 'pandas.core.series.Series'&gt;
+RangeIndex: 120 entries, 0 to 119
+Series name: Manufacturer
+Non-Null Count  Dtype 
+--------------  ----- 
+120 non-null    object
+dtypes: object(1)
+memory usage: 1.1+ KB</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>115    2.7
+116    2.4
+117    2.2
+118    2.1
+119    2.0
+Name: Units Sold (million ), dtype: float64</code></pre>
+</div>
+</div>
+<div id="ac892b83" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a brief introspection into potential outcomes from cellphone and device usage, as well as, implications that it could pose against influencing the pro(s) and con(s) of disruptive behavior. </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 700 Participants</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ages 18-59 years of age</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of 38 years old.</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>df_4.describe()</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>df_4.info()</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>df_4.columns</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>df_4[<span class="st">'Device Model'</span>].describe()</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>df_4[<span class="st">'Device Model'</span>].head()</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>df_4[<span class="st">'Operating System'</span>].describe()</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>df_4[<span class="st">'Battery Drain (mAh/day)'</span>].describe()</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>df_4[<span class="st">'Age'</span>].describe()</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co"># df_4('Screen On Time (hours/day)').info()</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>df_4[<span class="st">'User Behavior Class'</span>].describe()</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co"># df_4['Battery Drain (mAh/day)'].describe()</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>df_4[<span class="st">'Age'</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 700 entries, 0 to 699
+Data columns (total 11 columns):
+ #   Column                      Non-Null Count  Dtype  
+---  ------                      --------------  -----  
+ 0   User ID                     700 non-null    int64  
+ 1   Device Model                700 non-null    object 
+ 2   Operating System            700 non-null    object 
+ 3   App Usage Time (min/day)    700 non-null    int64  
+ 4   Screen On Time (hours/day)  700 non-null    float64
+ 5   Battery Drain (mAh/day)     700 non-null    int64  
+ 6   Number of Apps Installed    700 non-null    int64  
+ 7   Data Usage (MB/day)         700 non-null    int64  
+ 8   Age                         700 non-null    int64  
+ 9   Gender                      700 non-null    object 
+ 10  User Behavior Class         700 non-null    int64  
+dtypes: float64(1), int64(7), object(3)
+memory usage: 60.3+ KB</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>count    700.000000
+mean      38.482857
+std       12.012916
+min       18.000000
+25%       28.000000
+50%       38.000000
+75%       49.000000
+max       59.000000
+Name: Age, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="plots-for-visualizing-the-datasets-building-out-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="plots-for-visualizing-the-datasets-building-out-analysis">Plots for Visualizing the Datasets &amp; Building Out Analysis</h3>
+<p>Question #1 What are the top selling manufacturers for mobile devices in the World by total gross sales?</p>
+<p>It is critical to highlight that after using these datasets extensively, there are notable gaps in recorded and compiled data-points, which is expressed and seen within several of the graphs, resulting in an assessment of the findings being quite restrictive. It does however highlight the impact of total device sales made overtime, demonstrating the disruptive influence of smartphones and global manufacturers overtime intently launching, and distributing devices to as many ‘hands’ as possibly accessible. It would be unique to explore some data enrichment techniques and expand this with more datasets to ensure that it properly represents any future assertions that could be made. With that in mind, here are a few critical key points and charts for showcasing the influence of smartphone sales by the ‘best selling’ manufacturers across the world.</p>
+<div id="41f950df" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch price of devices measured over the course of (years) to showcase the differences that have been made within the industry.*args</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Launched Price (USA)'</span>] <span class="op">=</span> df_2[<span class="st">'Launched Price (USA)'</span>].replace(<span class="st">'[\$,]'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Launched Price (USA)'</span>] <span class="op">=</span> pd.to_numeric(df_2[<span class="st">'Launched Price (USA)'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>price_trend <span class="op">=</span> df_2.groupby([<span class="st">'Launched Year'</span>, <span class="st">'Company Name'</span>])[<span class="st">'Launched Price (USA)'</span>].mean().reset_index()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>top_brands <span class="op">=</span> df_2[<span class="st">'Company Name'</span>].value_counts().head(<span class="dv">5</span>).index</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>filtered_price_trend <span class="op">=</span> price_trend[price_trend[<span class="st">'Company Name'</span>].isin(top_brands)]</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>filtered_price_trend, x<span class="op">=</span><span class="st">'Launched Year'</span>, y<span class="op">=</span><span class="st">'Launched Price (USA)'</span>, hue<span class="op">=</span><span class="st">'Company Name'</span>, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Price Trends of Top 5 Phone Brands Over Time"</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Avg Launch Price (USD)"</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co"># This dataset is missing data-points, which is unfortunate for the purposes of our intents to analyze the extracted, compiled, and utilized data-points.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-9-output-1.png" width="1334" height="662" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="4fbe7645" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_3[<span class="st">'Year'</span>] <span class="op">=</span> pd.to_numeric(df_3[<span class="st">'Year'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>top_sales_year <span class="op">=</span> df_3.groupby([<span class="st">'Year'</span>, <span class="st">'Manufacturer'</span>, <span class="st">'Model'</span>])[<span class="st">'Units Sold (million )'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>top_5_per_year <span class="op">=</span> top_sales_year.groupby(<span class="st">'Year'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.nlargest(<span class="dv">5</span>, <span class="st">'Units Sold (million )'</span>)).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>top_5_per_year, x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'Units Sold (million )'</span>, hue<span class="op">=</span><span class="st">'Manufacturer'</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top Selling Phones by Year and Manufacturer"</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Units Sold (Million)"</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to showcase this over the time of year, to indicate what peak times phones were being sold, how many, and what potentially caused these spikes?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-10-output-1.png" width="1334" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="9687d3ca" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">22</span>, <span class="dv">10</span>))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df_3, x<span class="op">=</span><span class="st">'Manufacturer'</span>, y<span class="op">=</span><span class="st">'Units Sold (million )'</span>, palette<span class="op">=</span><span class="st">'Set2'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Total Units Sold by Manufacturer (2025)"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Manufacturer"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Units Sold (Million)"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-11-output-1.png" width="2096" height="944" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="bca0adc4" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_numeric(col, unit<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    cleaned_series <span class="op">=</span> df_2[col].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="vs">r'[^\d.]'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    cleaned_series <span class="op">=</span> cleaned_series.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'.'</span>.join(x.split(<span class="st">'.'</span>)[:<span class="dv">2</span>]) <span class="cf">if</span> <span class="st">'.'</span> <span class="kw">in</span> x <span class="cf">else</span> x)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    cleaned_series <span class="op">=</span> cleaned_series.replace(<span class="st">''</span>, <span class="bu">float</span>(<span class="st">'nan'</span>)) </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.to_numeric(cleaned_series, errors<span class="op">=</span><span class="st">'coerce'</span>).astype(<span class="bu">float</span>) </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Mobile Weight (g)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Mobile Weight'</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'RAM (GB)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'RAM'</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Front Camera (MP)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Front Camera'</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Back Camera (MP)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Back Camera'</span>)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Battery (mAh)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Battery Capacity'</span>)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Screen Size (inch)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Screen Size'</span>)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">'Launched Price (Pakistan)'</span>, <span class="st">'Launched Price (India)'</span>, <span class="st">'Launched Price (China)'</span>,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Launched Price (USA)'</span>, <span class="st">'Launched Price (Dubai)'</span>]:</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    df_2[col] <span class="op">=</span> clean_numeric(col)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="co"># this doesn't account for exchange rates which is something that I would want to consider in the future. </span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>melted_prices <span class="op">=</span> df_2.melt(</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span>[<span class="st">'Model Name'</span>, <span class="st">'Company Name'</span>],</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Launched Price (Pakistan)'</span>, <span class="st">'Launched Price (India)'</span>,</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Launched Price (China)'</span>, <span class="st">'Launched Price (USA)'</span>, <span class="st">'Launched Price (Dubai)'</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    var_name<span class="op">=</span><span class="st">'Country'</span>,</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">'Price'</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>melted_prices, x<span class="op">=</span><span class="st">'Country'</span>, y<span class="op">=</span><span class="st">'Price'</span>)</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Launched Price Comparison by Country"</span>)</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-12-output-1.png" width="994" height="646" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Question #2: What are trends in specifications of mobile devices over the years and how do they affect sales?</p>
+<p>Device ‘Specs’ have been on a collaterol rise for the past 15+ years, with nearly every succeeding year boasting numerous upgrades for ‘top-tier devices’ released by manufacturers across the globe. While this benefits the consumer immensely during this ‘golden age of industry’, there are some pitfalls as devices in general have increasingly become more expensive, and at what cost? Included within this report as some charts to showcase some of the noteworthy ‘spec’ increments and the limited assessment from the datapoints derived from a few of the datasets.</p>
+<div id="566689fa" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'RAM_GB'</span>] <span class="op">=</span> df_2[<span class="st">'RAM'</span>].<span class="bu">str</span>.replace(<span class="st">'GB'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">False</span>).<span class="bu">str</span>.strip()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'RAM_GB'</span>] <span class="op">=</span> pd.to_numeric(df_2[<span class="st">'RAM_GB'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Screen Size'</span>] <span class="op">=</span> df_2[<span class="st">'Screen Size'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="vs">r'[^\d\.]'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Screen Size'</span>] <span class="op">=</span> pd.to_numeric(df_2[<span class="st">'Screen Size'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Battery Capacity'</span>] <span class="op">=</span> df_2[<span class="st">'Battery Capacity'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="vs">r'[^\d\.]'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Battery Capacity'</span>] <span class="op">=</span> pd.to_numeric(df_2[<span class="st">'Battery Capacity'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>summary_by_year <span class="op">=</span> df_2.groupby(<span class="st">'Launched Year'</span>).agg(</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    avg_ram_gb <span class="op">=</span> (<span class="st">'RAM_GB'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    max_ram_gb <span class="op">=</span> (<span class="st">'RAM_GB'</span>, <span class="st">'max'</span>),</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    min_ram_gb <span class="op">=</span> (<span class="st">'RAM_GB'</span>, <span class="st">'min'</span>),</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    avg_battery <span class="op">=</span> (<span class="st">'Battery Capacity'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    max_battery <span class="op">=</span> (<span class="st">'Battery Capacity'</span>, <span class="st">'max'</span>),</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    min_battery <span class="op">=</span> (<span class="st">'Battery Capacity'</span>, <span class="st">'min'</span>),</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    num_devices <span class="op">=</span> (<span class="st">'Model Name'</span>, <span class="st">'nunique'</span>)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>summary_by_year.<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Launched Year</th>
+<th data-quarto-table-cell-role="th">avg_ram_gb</th>
+<th data-quarto-table-cell-role="th">max_ram_gb</th>
+<th data-quarto-table-cell-role="th">min_ram_gb</th>
+<th data-quarto-table-cell-role="th">avg_battery</th>
+<th data-quarto-table-cell-role="th">max_battery</th>
+<th data-quarto-table-cell-role="th">min_battery</th>
+<th data-quarto-table-cell-role="th">num_devices</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2014</td>
+<td>1.50</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>2150.00</td>
+<td>2300</td>
+<td>2000</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2016</td>
+<td>3.40</td>
+<td>6.0</td>
+<td>1.5</td>
+<td>3920.00</td>
+<td>5000</td>
+<td>2600</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2017</td>
+<td>4.44</td>
+<td>8.0</td>
+<td>3.0</td>
+<td>3220.78</td>
+<td>4000</td>
+<td>2716</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2018</td>
+<td>4.38</td>
+<td>10.0</td>
+<td>2.0</td>
+<td>3177.95</td>
+<td>4030</td>
+<td>2658</td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2019</td>
+<td>6.28</td>
+<td>12.0</td>
+<td>3.0</td>
+<td>3950.72</td>
+<td>5124</td>
+<td>2800</td>
+<td>46</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2020</td>
+<td>6.42</td>
+<td>12.0</td>
+<td>2.0</td>
+<td>4958.59</td>
+<td>10307</td>
+<td>2227</td>
+<td>98</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2021</td>
+<td>7.06</td>
+<td>12.0</td>
+<td>2.0</td>
+<td>4616.30</td>
+<td>7250</td>
+<td>2438</td>
+<td>103</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2022</td>
+<td>7.58</td>
+<td>16.0</td>
+<td>2.0</td>
+<td>4992.62</td>
+<td>11200</td>
+<td>3200</td>
+<td>146</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2023</td>
+<td>8.12</td>
+<td>16.0</td>
+<td>2.0</td>
+<td>5297.85</td>
+<td>11200</td>
+<td>3200</td>
+<td>181</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>2024</td>
+<td>9.08</td>
+<td>16.0</td>
+<td>3.0</td>
+<td>5416.70</td>
+<td>11000</td>
+<td>3500</td>
+<td>290</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>2025</td>
+<td>9.00</td>
+<td>12.0</td>
+<td>6.0</td>
+<td>5716.67</td>
+<td>6000</td>
+<td>5000</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="939357d3" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>summary_by_year[<span class="st">'ram_diff'</span>] <span class="op">=</span> summary_by_year[<span class="st">'max_ram_gb'</span>] <span class="op">-</span> summary_by_year[<span class="st">'min_ram_gb'</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>summary_by_year, x<span class="op">=</span><span class="st">'Launched Year'</span>, y<span class="op">=</span><span class="st">'ram_diff'</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'purple'</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Difference in RAM (GB) by Launch Year"</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Launch Year"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Max - Min RAM (GB)"</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The reason for the drop in devices with RAM capacity within the year for 2025 is due to the target year not being fully populated as this is a first quarter analysis with extremelly limited data that was provided within that dataset.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-14-output-1.png" width="944" height="464" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f1205a6f" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>summary_by_year, x<span class="op">=</span><span class="st">'Launched Year'</span>, y<span class="op">=</span><span class="st">'avg_battery'</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average Battery Capacity Over the Years"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Battery (mAh)"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-15-output-1.png" width="829" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Question #3: What ages are using the most screen on usage per day; is there a dominating phone model, os, and gender where this is more pronounced?</p>
+<p>It is imperative to denote that there are 700 participants within this study or dataset ranging from the age of 18-59 years old, with 38 years of age being the mean, however this is not represented of a target demographic (ie, country, state, city, time period, etc) in which substanciated claims could be asserted. With that in mind, Males between the ages of 18-25 &amp; 36-50 were reported to have more device usage time (screen wise &amp; by population) whereas females in the ages 26-35 were not only the most represented population wise but some female participants reported total max screen time at (12 hours a day). It is assumed that this study was conducted during 2021 due to the Top 5 Phones that were released and utilized within this study, with that in mind, most users reported spending 4-5 hours on average on their device, with 47 year olds holding the baton for the most hours spent a day at 7.3 hours recorded as the average.</p>
+<p>It would be imperative to expand the target demographic threshold as well as diversify the dataset in order to populate a proper basis for concrete findings and conclusions, as at this time, the credibility of the study is in question due to these aforementioned factors.</p>
+<div id="c4177ace" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># App Usage by Behavior Class ()</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df_4, x<span class="op">=</span><span class="st">'User Behavior Class'</span>, y<span class="op">=</span><span class="st">'App Usage Time (min/day)'</span>, palette<span class="op">=</span><span class="st">'Set3'</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"App Usage Time by User Behavior Class"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Screen time by OS (IOS vs Android)</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df_4, x<span class="op">=</span><span class="st">'Operating System'</span>, y<span class="op">=</span><span class="st">'Screen On Time (hours/day)'</span>, ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average Screen On Time by Operating System"</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-16-output-1.png" width="597" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-16-output-2.png" width="581" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="bc68536b" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensures that age groups are properly assessed.</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>age_screen_time <span class="op">=</span> df_4.groupby(<span class="st">'Age'</span>)[<span class="st">'Screen On Time (hours/day)'</span>].mean().reset_index()</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Average screen time per device or OS (IOS vs Android)</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>model_usage <span class="op">=</span> df_4.groupby(<span class="st">'Device Model'</span>)[<span class="st">'Screen On Time (hours/day)'</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">5</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>os_usage <span class="op">=</span> df_4.groupby(<span class="st">'Operating System'</span>)[<span class="st">'Screen On Time (hours/day)'</span>].mean()</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>gender_usage <span class="op">=</span> df_4.groupby(<span class="st">'Gender'</span>)[<span class="st">'Screen On Time (hours/day)'</span>].mean()</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Screen On Time by Age</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>age_screen_time, x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Screen On Time (hours/day)'</span>, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Screen Time by Age"</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># No observed difference in screentime by gender, so that metric was excluded in the assessment.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-17-output-1.png" width="593" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f88598bd" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Age Groups were binned, so that they are easier to see, identify and analyze.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df_4[<span class="st">'Age Group'</span>] <span class="op">=</span> pd.cut(df_4[<span class="st">'Age'</span>], bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">18</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="dv">70</span>], labels<span class="op">=</span>[<span class="st">'&lt;18'</span>, <span class="st">'18-25'</span>, <span class="st">'26-35'</span>, <span class="st">'36-50'</span>, <span class="st">'50+'</span>])</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Age Group versus Screen Time</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df_4, x<span class="op">=</span><span class="st">'Age Group'</span>, y<span class="op">=</span><span class="st">'Screen On Time (hours/day)'</span>, hue<span class="op">=</span><span class="st">'Gender'</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Screen On Time by Age Group and Gender"</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-18-output-1.png" width="812" height="529" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="d3fa95c0" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Usage per user by age categories once more!</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df_4, x<span class="op">=</span><span class="st">'Age Group'</span>, y<span class="op">=</span><span class="st">'Data Usage (MB/day)'</span>, palette<span class="op">=</span><span class="st">'coolwarm'</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Daily Mobile Data Usage by Age Group"</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Data Usage (MB/day)"</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-19-output-1.png" width="605" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="1bea3442" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>top_models <span class="op">=</span> df_4.groupby(<span class="st">'Device Model'</span>)[<span class="st">'Screen On Time (hours/day)'</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">5</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>top_models.plot(kind<span class="op">=</span><span class="st">'bar'</span>, color<span class="op">=</span><span class="st">'purple'</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 5 Device Models by Average Screen On Time"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Screen Time (hrs/day)"</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-20-output-1.png" width="656" height="464" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="58c6125e" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>usage_corr <span class="op">=</span> df_4[[<span class="st">'App Usage Time (min/day)'</span>, <span class="st">'Screen On Time (hours/day)'</span>, <span class="st">'Battery Drain (mAh/day)'</span>, <span class="st">'Number of Apps Installed'</span>, <span class="st">'Data Usage (MB/day)'</span>]].corr()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>sns.heatmap(usage_corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Correlation Between Mobile Usage Metrics"</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-21-output-1.png" width="719" height="606" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="other-charts-data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="other-charts-data-analysis">Other Charts &amp; Data Analysis</h3>
+<p>These were apart of the analysis and data exploration phase, many of these were excluded due to complexity, lack of assertive data points, or they were conclusive enough to display in the results.</p>
+<div id="0fc0e268" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Analysis &amp; Chart Exploration #</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Chart &amp; Data Exploration phase of df_1 </span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sales and Mobile Device Dataframe</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># To check and see if there are any outliers or null values</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_1.isnull(), cbar<span class="op">=</span><span class="va">False</span>, cmap<span class="op">=</span><span class="st">'Reds'</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Values Heatmap"</span>)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Assesses the price(s) of devices</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>sns.histplot(df_1[<span class="st">'Price'</span>], kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of Product Price"</span>)</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Price"</span>)</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="co">## Top 10 Overview of Phones ##</span></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>top_products <span class="op">=</span> df_1[<span class="st">'Product'</span>].value_counts().nlargest(<span class="dv">10</span>)</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>top_products.index, y<span class="op">=</span>top_products.values)</span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 10 Most Frequent Products"</span>)</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Price versus Quantity of Phones Sold Overall #</span></span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df_1, x<span class="op">=</span><span class="st">'Price'</span>, y<span class="op">=</span><span class="st">'Quantity Sold'</span>, hue<span class="op">=</span><span class="st">'Brand'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Price vs Quantity Sold by Brand"</span>)</span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Price"</span>)</span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Quantity Sold"</span>)</span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>plt.legend(bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Monthly Sales Price Trend #</span></span>
+<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Dispatch Date'</span>] <span class="op">=</span> pd.to_datetime(df_1[<span class="st">'Dispatch Date'</span>])</span>
+<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a>df_1[<span class="st">'Month'</span>] <span class="op">=</span> df_1[<span class="st">'Dispatch Date'</span>].dt.to_period(<span class="st">'M'</span>)</span>
+<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-53"><a href="#cb29-53" aria-hidden="true" tabindex="-1"></a>monthly_sales <span class="op">=</span> df_1.groupby(<span class="st">'Month'</span>)[<span class="st">'Quantity Sold'</span>].<span class="bu">sum</span>()</span>
+<span id="cb29-54"><a href="#cb29-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-55"><a href="#cb29-55" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb29-56"><a href="#cb29-56" aria-hidden="true" tabindex="-1"></a>monthly_sales.plot(kind<span class="op">=</span><span class="st">'line'</span>, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb29-57"><a href="#cb29-57" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Monthly Quantity Sold Over Time"</span>)</span>
+<span id="cb29-58"><a href="#cb29-58" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Month"</span>)</span>
+<span id="cb29-59"><a href="#cb29-59" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Quantity Sold"</span>)</span>
+<span id="cb29-60"><a href="#cb29-60" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb29-61"><a href="#cb29-61" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb29-63"><a href="#cb29-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-64"><a href="#cb29-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-65"><a href="#cb29-65" aria-hidden="true" tabindex="-1"></a><span class="co">## Correlation Plot ##</span></span>
+<span id="cb29-66"><a href="#cb29-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-67"><a href="#cb29-67" aria-hidden="true" tabindex="-1"></a>numeric_cols <span class="op">=</span> df_1.select_dtypes(include<span class="op">=</span>[<span class="st">'int64'</span>, <span class="st">'float64'</span>]).columns</span>
+<span id="cb29-68"><a href="#cb29-68" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb29-69"><a href="#cb29-69" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_1[numeric_cols].corr(), annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
+<span id="cb29-70"><a href="#cb29-70" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Correlation Heatmap"</span>)</span>
+<span id="cb29-71"><a href="#cb29-71" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-22-output-1.png" width="966" height="649" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-22-output-2.png" width="828" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-22-output-3.png" width="985" height="514" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-22-output-4.png" width="971" height="529" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-22-output-5.png" width="1134" height="559" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-22-output-6.png" width="607" height="509" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="5b6416ce" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Company Name</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Company Name'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Company Name Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'Company Name'</span>].describe())</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_2[<span class="st">'Company Name'</span>].value_counts().head())</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Battery Capacity</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Battery Capacity'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Battery Capacity Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'Battery Capacity'</span>].describe())</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_2[<span class="st">'Battery Capacity'</span>].value_counts().head())</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Launched Price (USA)</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Launched Price (USA)'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Launched Price Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'Launched Price (USA)'</span>].describe())</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_2[<span class="st">'Launched Price (USA)'</span>].value_counts().head())</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co"># RAM</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'RAM'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> RAM Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'RAM'</span>].describe())</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_2[<span class="st">'RAM'</span>].value_counts().head())</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Screen Size</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Screen Size'</span> <span class="kw">in</span> df_2.columns:</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📱 Screen Size Stats:</span><span class="ch">\n</span><span class="st">"</span>, df_2[<span class="st">'Screen Size'</span>].describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Company Name Stats:
+ count      930
+unique      19
+top       Oppo
+freq       129
+Name: Company Name, dtype: object
+Company Name
+Oppo       129
+Apple       97
+Honor       91
+Samsung     88
+Vivo        86
+Name: count, dtype: int64
+
+ Battery Capacity Stats:
+ count      930.000000
+mean      5026.163441
+std       1355.548264
+min       2000.000000
+25%       4402.500000
+50%       5000.000000
+75%       5091.250000
+max      11200.000000
+Name: Battery Capacity, dtype: float64
+Battery Capacity
+5000    293
+4500     84
+4000     36
+6000     35
+5200     35
+Name: count, dtype: int64
+
+ Launched Price Stats:
+ count    0.0
+mean     NaN
+std      NaN
+min      NaN
+25%      NaN
+50%      NaN
+75%      NaN
+max      NaN
+Name: Launched Price (USA), dtype: float64
+Series([], Name: count, dtype: int64)
+
+ RAM Stats:
+ count     930
+unique     11
+top       8GB
+freq      308
+Name: RAM, dtype: object
+RAM
+8GB     308
+6GB     206
+12GB    193
+4GB     146
+3GB      34
+Name: count, dtype: int64
+
+📱 Screen Size Stats:
+ count    926.000000
+mean       7.085238
+std        1.536834
+min        5.000000
+25%        6.500000
+50%        6.670000
+75%        6.780000
+max       14.600000
+Name: Screen Size, dtype: float64</code></pre>
+</div>
+</div>
+<div id="688cfaa6" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Exploration Phase</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">### DATA EXPLORATION PHASE FOR PHONES made within 2011 - 2025</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">## PENDING MORE UPDATES to ensure that data is represented well.</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to covert the data to clean strings as it is stored in object(s)...</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_numeric(col, unit<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove non-digit and non-dot characters, then handle multiple dots by keeping only the first one</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    cleaned_series <span class="op">=</span> df_2[col].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="vs">r'[^\d.]'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    cleaned_series <span class="op">=</span> cleaned_series.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'.'</span>.join(x.split(<span class="st">'.'</span>)[:<span class="dv">2</span>]) <span class="cf">if</span> <span class="st">'.'</span> <span class="kw">in</span> x <span class="cf">else</span> x)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    cleaned_series <span class="op">=</span> cleaned_series.replace(<span class="st">''</span>, <span class="bu">float</span>(<span class="st">'nan'</span>)) <span class="co"># Convert empty strings to NaN</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.to_numeric(cleaned_series, errors<span class="op">=</span><span class="st">'coerce'</span>).astype(<span class="bu">float</span>) <span class="co"># Use pd.to_numeric with errors='coerce'</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Mobile Weight (g)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Mobile Weight'</span>)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'RAM (GB)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'RAM'</span>)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Front Camera (MP)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Front Camera'</span>)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Back Camera (MP)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Back Camera'</span>)</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Battery (mAh)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Battery Capacity'</span>)</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>df_2[<span class="st">'Screen Size (inch)'</span>] <span class="op">=</span> clean_numeric(<span class="st">'Screen Size'</span>)</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">'Launched Price (Pakistan)'</span>, <span class="st">'Launched Price (India)'</span>, <span class="st">'Launched Price (China)'</span>,</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Launched Price (USA)'</span>, <span class="st">'Launched Price (Dubai)'</span>]:</span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>    df_2[col] <span class="op">=</span> clean_numeric(col)</span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a><span class="co"># OPPO leads the pack in #1, followed by APPLE, and Honor shortly after it... Samsung is in 4th...</span></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>df_2, y<span class="op">=</span><span class="st">'Company Name'</span>, order<span class="op">=</span>df_2[<span class="st">'Company Name'</span>].value_counts().head(<span class="dv">10</span>).index)</span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 10 Mobile Companies by Launch Count"</span>)</span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Models Launched"</span>)</span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Company"</span>)</span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Showcases the RAM VS Battery Capacity of devices with a distribution curve to analysis generally where outliers are present and where industry wide</span></span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Specs have more or less stayed the same...</span></span>
+<span id="cb32-42"><a href="#cb32-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-43"><a href="#cb32-43" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb32-44"><a href="#cb32-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-45"><a href="#cb32-45" aria-hidden="true" tabindex="-1"></a>sns.histplot(df_2[<span class="st">'RAM (GB)'</span>], bins<span class="op">=</span><span class="dv">15</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>])</span>
+<span id="cb32-46"><a href="#cb32-46" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"RAM Distribution"</span>)</span>
+<span id="cb32-47"><a href="#cb32-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-48"><a href="#cb32-48" aria-hidden="true" tabindex="-1"></a>sns.histplot(df_2[<span class="st">'Battery (mAh)'</span>], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"orange"</span>)</span>
+<span id="cb32-49"><a href="#cb32-49" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Battery Capacity Distribution"</span>)</span>
+<span id="cb32-50"><a href="#cb32-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-51"><a href="#cb32-51" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb32-52"><a href="#cb32-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb32-53"><a href="#cb32-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-54"><a href="#cb32-54" aria-hidden="true" tabindex="-1"></a><span class="co">## Does a screen that is bigger or smaller translate to an increased price tag? ...</span></span>
+<span id="cb32-55"><a href="#cb32-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Well we have a general assumption based off of market trends and practices present in 2025.</span></span>
+<span id="cb32-56"><a href="#cb32-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-57"><a href="#cb32-57" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb32-58"><a href="#cb32-58" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df_2, x<span class="op">=</span><span class="st">'Screen Size (inch)'</span>, y<span class="op">=</span><span class="st">'Launched Price (USA)'</span>, hue<span class="op">=</span><span class="st">'Company Name'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb32-59"><a href="#cb32-59" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Screen Size vs USA Price"</span>)</span>
+<span id="cb32-60"><a href="#cb32-60" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Screen Size (inch)"</span>)</span>
+<span id="cb32-61"><a href="#cb32-61" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Price in USD"</span>)</span>
+<span id="cb32-62"><a href="#cb32-62" aria-hidden="true" tabindex="-1"></a>plt.legend(bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb32-63"><a href="#cb32-63" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb32-64"><a href="#cb32-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-65"><a href="#cb32-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-66"><a href="#cb32-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-67"><a href="#cb32-67" aria-hidden="true" tabindex="-1"></a><span class="co">### Price Comparisons Across Countries </span><span class="al">###</span></span>
+<span id="cb32-68"><a href="#cb32-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-69"><a href="#cb32-69" aria-hidden="true" tabindex="-1"></a>melted_prices <span class="op">=</span> df_2.melt(</span>
+<span id="cb32-70"><a href="#cb32-70" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span>[<span class="st">'Model Name'</span>, <span class="st">'Company Name'</span>],</span>
+<span id="cb32-71"><a href="#cb32-71" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[</span>
+<span id="cb32-72"><a href="#cb32-72" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Launched Price (Pakistan)'</span>, <span class="st">'Launched Price (India)'</span>,</span>
+<span id="cb32-73"><a href="#cb32-73" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Launched Price (China)'</span>, <span class="st">'Launched Price (USA)'</span>, <span class="st">'Launched Price (Dubai)'</span></span>
+<span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb32-75"><a href="#cb32-75" aria-hidden="true" tabindex="-1"></a>    var_name<span class="op">=</span><span class="st">'Country'</span>,</span>
+<span id="cb32-76"><a href="#cb32-76" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">'Price'</span></span>
+<span id="cb32-77"><a href="#cb32-77" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-78"><a href="#cb32-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-79"><a href="#cb32-79" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb32-80"><a href="#cb32-80" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>melted_prices, x<span class="op">=</span><span class="st">'Country'</span>, y<span class="op">=</span><span class="st">'Price'</span>)</span>
+<span id="cb32-81"><a href="#cb32-81" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Launched Price Comparison by Country"</span>)</span>
+<span id="cb32-82"><a href="#cb32-82" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb32-83"><a href="#cb32-83" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-24-output-1.png" width="858" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-24-output-2.png" width="1328" height="463" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-24-output-3.png" width="872" height="529" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-24-output-4.png" width="994" height="646" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="7e459f6b" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Exploration and Charts that were created to analyze the dataset in conjunction with a few plugins within my IDE of choice, Visual Code Studio. </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis into App Usage and Time Spent in Minutes Per Day </span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># What are the groupings, how many people were within this study, and what distinct features are present here?</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>sns.histplot(df_4[<span class="st">'App Usage Time (min/day)'</span>], bins<span class="op">=</span><span class="dv">30</span>, kde<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">'skyblue'</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of App Usage Time (min/day)"</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Minutes per Day"</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co"># User Behavior (reported) versus Screen On Time per Device</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df_4, x<span class="op">=</span><span class="st">'App Usage Time (min/day)'</span>, y<span class="op">=</span><span class="st">'Battery Drain (mAh/day)'</span>, hue<span class="op">=</span><span class="st">'Operating System'</span>)</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Battery Drain vs. App Usage Time"</span>)</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"App Usage Time (min/day)"</span>)</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Battery Drain (mAh/day)"</span>)</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="co">## Gender Versus Screen on Time Usage (per device)</span></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a><span class="co"># App Usage</span></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Gender'</span>, y<span class="op">=</span><span class="st">'App Usage Time (min/day)'</span>, data<span class="op">=</span>df_4, palette<span class="op">=</span><span class="st">'pastel'</span>)</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"App Usage Time by Gender"</span>)</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Screen On Time</span></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Gender'</span>, y<span class="op">=</span><span class="st">'Screen On Time (hours/day)'</span>, data<span class="op">=</span>df_4, palette<span class="op">=</span><span class="st">'muted'</span>)</span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Screen On Time by Gender"</span>)</span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature Importance HeatMap</span></span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a>numerical_cols <span class="op">=</span> df_4.select_dtypes(include<span class="op">=</span>[<span class="st">'int64'</span>, <span class="st">'float64'</span>]).columns</span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_4[numerical_cols].corr(), annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Correlation Heatmap of Numerical Features"</span>)</span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Usage Versus the Number of Installed Apps on a device</span></span>
+<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a><span class="co"># NEED to explain the behavior categories and what this scatterplot grouping showcases.</span></span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df_4, x<span class="op">=</span><span class="st">'Number of Apps Installed'</span>, y<span class="op">=</span><span class="st">'Data Usage (MB/day)'</span>, hue<span class="op">=</span><span class="st">'User Behavior Class'</span>, palette<span class="op">=</span><span class="st">'tab10'</span>)</span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Data Usage vs. Number of Apps Installed"</span>)</span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Apps"</span>)</span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Data Usage (MB/day)"</span>)</span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Phone Models that are the most popular within this target demographic and dataset...</span></span>
+<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a>top_devices <span class="op">=</span> df_4[<span class="st">'Device Model'</span>].value_counts().nlargest(<span class="dv">10</span>)</span>
+<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>top_devices.values, y<span class="op">=</span>top_devices.index, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb33-70"><a href="#cb33-70" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 10 Most Used Device Models"</span>)</span>
+<span id="cb33-71"><a href="#cb33-71" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Users"</span>)</span>
+<span id="cb33-72"><a href="#cb33-72" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Device Model"</span>)</span>
+<span id="cb33-73"><a href="#cb33-73" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb33-74"><a href="#cb33-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-75"><a href="#cb33-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-76"><a href="#cb33-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Age Distribution Versus the Behavior Classes</span></span>
+<span id="cb33-77"><a href="#cb33-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-78"><a href="#cb33-78" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.figure(figsize=(10, 5))</span></span>
+<span id="cb33-79"><a href="#cb33-79" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.scatterplot(x='User Behavior Class', y='Age', data=df_4, palette='Accent')</span></span>
+<span id="cb33-80"><a href="#cb33-80" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.title("Age Distribution Across User Behavior Classes")</span></span>
+<span id="cb33-81"><a href="#cb33-81" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.xlabel("User Behavior Class")</span></span>
+<span id="cb33-82"><a href="#cb33-82" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.ylabel("Age")</span></span>
+<span id="cb33-83"><a href="#cb33-83" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.show()</span></span>
+<span id="cb33-84"><a href="#cb33-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Battery Drainage by OS as on-device</span></span>
+<span id="cb33-86"><a href="#cb33-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-87"><a href="#cb33-87" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.figure(figsize=(10, 5))</span></span>
+<span id="cb33-88"><a href="#cb33-88" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.barplot(data=df_4, x='Operating System', y='Battery Drain (mAh/day)', estimator='mean', ci='sd', palette='deep')</span></span>
+<span id="cb33-89"><a href="#cb33-89" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.title("Average Battery Drain by Operating System")</span></span>
+<span id="cb33-90"><a href="#cb33-90" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.ylabel("Avg Battery Drain (mAh/day)")</span></span>
+<span id="cb33-91"><a href="#cb33-91" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.xlabel("Operating System")</span></span>
+<span id="cb33-92"><a href="#cb33-92" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.show()</span></span>
+<span id="cb33-93"><a href="#cb33-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-94"><a href="#cb33-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-95"><a href="#cb33-95" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb33-96"><a href="#cb33-96" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df_4, x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'App Usage Time (min/day)'</span>, hue<span class="op">=</span><span class="st">'Gender'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb33-97"><a href="#cb33-97" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"App Usage by Age and Gender"</span>)</span>
+<span id="cb33-98"><a href="#cb33-98" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Age"</span>)</span>
+<span id="cb33-99"><a href="#cb33-99" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"App Usage Time (min/day)"</span>)</span>
+<span id="cb33-100"><a href="#cb33-100" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb33-101"><a href="#cb33-101" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-25-output-1.png" width="812" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-25-output-2.png" width="829" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-25-output-3.png" width="1136" height="464" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-25-output-4.png" width="904" height="680" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-25-output-5.png" width="828" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-25-output-6.png" width="938" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="official-post_files/figure-html/cell-25-output-7.png" width="820" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

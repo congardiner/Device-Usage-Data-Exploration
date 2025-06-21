@@ -21,7 +21,7 @@ The analysis conducted on the datasets provided insights into various aspects of
 
 - What are some of the influences of mobile device usage in the United States and User Behavior? What ages are using the most screen on usage per day; is there a dominating phone model, os, and gender where this is more pronounced?
 
-The results are included within the official-post.qmd file, with a directed focus on showcasing the data exploration phase, techniques utilized for visualization and the results as indicated from the report. The analysis includes visualizations, statistical summaries, and insights derived from the (4) datasets that were used. 
+The results are included within the official-post.qmd file, with a directed focus on showcasing the data exploration phase, techniques utilized for visualization and the results as indicated from the report. The analysis includes visualizations, statistical summaries, and insights derived from the (4) datasets that were used.  
 
 It is imperative to denote that this analysis is not exhaustive, and is based on the datasets that were available at the time of this project; therefore, it is not representative of the entire mobile device market. The analysis is intended to provide insights into the mobile device market and user behavior based on the available data.
 

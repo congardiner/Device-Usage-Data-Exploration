@@ -1,0 +1,770 @@
+---
+title: "Mobile Data Exploration: User Behavior, Sales Report, & Specification Trend Analysis"
+Author: Conner Gardiner
+format: html
+execute:
+  echo: true
+  warning: false
+  error: false
+---
+
+##  Import Dependencies
+```{python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+## Upload Files
+```{python}
+    
+df_1 = pd.read_csv("C:\\Users\\18cga\\Documents\\GitHub\\Device Usage Data Exploration\\mobile_sales_data.csv", encoding='latin1')
+
+df_2 = pd.read_csv("C:\\Users\\18cga\\Documents\\GitHub\\Device Usage Data Exploration\\Mobiles Dataset (2025).csv", encoding='latin1')
+
+df_3 = pd.read_csv("C:\\Users\\18cga\\Documents\\GitHub\\Device Usage Data Exploration\\top 120 best-selling mobile phones.csv", encoding='latin1')
+df_4 = pd.read_csv("C:\\Users\\18cga\\Documents\\GitHub\\Device Usage Data Exploration\\user_behavior_dataset.csv", encoding='latin1')
+
+```
+
+
+##  Load Datasets
+```{python}
+df_1 = pd.read_csv('mobile_sales_data.csv', encoding='latin1')
+df_2 = pd.read_csv('Mobiles Dataset (2025).csv', encoding='latin1')
+df_3 = pd.read_csv('top 120 best-selling mobile phones.csv', encoding='latin1')
+df_4 = pd.read_csv('user_behavior_dataset.csv', encoding='latin1')
+```
+
+##  Explore All Datasets
+<!-- ```{python}
+explore_dataframe(df_1, "df_1: Mobile Sales")
+explore_dataframe(df_2, "df_2: Mobiles (2025)")
+explore_dataframe(df_3, "df_3: Top 120 Best-selling Mobiles")
+explore_dataframe(df_4, "df_4: User Behavior Dataset")
+``` -->
+
+## 6️⃣ Specific Insights - DF_1
+
+```{python}
+# Mobile Sales Data Exploration #
+# Feature importance, trends, and initial data analysis.
+# 16 features / columns, zero nulls!
+
+
+df_1.head()
+df_1.describe()
+df_1.info()
+df_1.shape
+df_1.isnull().sum()
+df_1.isna().sum()
+
+
+df_1.columns
+df_1.dtypes
+
+# Could Add $ to the Price Column...
+df_1['Price'].describe()
+df_1['Price'].value_counts()
+df_1['Price'].unique().sum()
+df_1['Price'].head()
+
+df_1['Brand'].describe()
+df_1['Brand'].value_counts()
+df_1['Brand'].unique().sum()
+df_1['Brand'].head()
+
+
+# df_1['Model'].describe()
+# df_1['Model'].value_counts()
+# df_1['Model'].unique().sum()
+# df_1['Model'].head()
+
+
+df_1['RAM'].describe()
+df_1['RAM'].value_counts()
+df_1['RAM'].unique().sum()
+df_1['RAM'].head()
+
+
+
+df_1['Quantity Sold'].describe()
+df_1['Quantity Sold'].value_counts()
+df_1['Quantity Sold'].unique().sum()
+df_1['Quantity Sold'].head()
+
+
+# Where these reported in bulk or sold off to individual customers?
+
+df_1['Customer Location'].describe()
+df_1['Customer Location'].value_counts()
+df_1['Customer Location'].unique().sum()
+df_1['Customer Location'].head()
+
+df_1['Dispatch Date'].describe()
+df_1['Dispatch Date'].value_counts()
+df_1['Dispatch Date'].unique().sum()
+df_1['Dispatch Date'].head()
+
+# What is the overall average, what trends are we seeing, what major companies are still 'ripping' off consumers?
+
+df_1['SSD'].describe()
+df_1['SSD'].value_counts()
+df_1['SSD'].head()
+df_1['SSD'].isna().sum()
+df_1['SSD'].isnull().sum()
+
+
+# Which region sells more phones overall, which types, sales prices, conversions, if 'manufactured costs' were included, what margins are present?
+# What recommendations would be placed for a market research analysis on the best 'emerging marketspace' for an Android Distributor?
+
+df_1['Region'].describe()
+df_1['Region'].value_counts()
+df_1['Region'].unique().sum()
+df_1['Region'].head()
+
+
+
+
+
+### What do these different columns display or relay in terms of initial first impressions and trends of mobile devices ###
+# What influence has weight had on devices, is there an average or assumed weight that is preferred?
+
+```
+
+
+```{python}
+# Data Analysis & Chart Exploration #
+
+# Chart & Data Exploration phase of df_1 
+# Sales and Mobile Device Dataframe
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# To check and see if there are any outliers or null values
+
+plt.figure(figsize=(12, 6))
+sns.heatmap(df_1.isnull(), cbar=False, cmap='Reds')
+plt.title("Missing Values Heatmap")
+plt.show()
+
+# Assesses the price(s) of devices
+
+plt.figure(figsize=(10, 5))
+sns.histplot(df_1['Price'], kde=True, bins=50)
+plt.title("Distribution of Product Price")
+plt.xlabel("Price")
+plt.ylabel("Frequency")
+plt.show()
+
+## Top 10 Overview of Phones ##
+
+plt.figure(figsize=(12, 5))
+top_products = df_1['Product'].value_counts().nlargest(10)
+sns.barplot(x=top_products.index, y=top_products.values)
+plt.title("Top 10 Most Frequent Products")
+plt.ylabel("Count")
+plt.xticks(rotation=45)
+plt.show()
+
+
+# Price versus Quantity of Phones Sold Overall #
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=df_1, x='Price', y='Quantity Sold', hue='Brand', alpha=0.7)
+plt.title("Price vs Quantity Sold by Brand")
+plt.xlabel("Price")
+plt.ylabel("Quantity Sold")
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.show()
+
+
+# Monthly Sales Price Trend #
+
+df_1['Dispatch Date'] = pd.to_datetime(df_1['Dispatch Date'])
+df_1['Month'] = df_1['Dispatch Date'].dt.to_period('M')
+
+monthly_sales = df_1.groupby('Month')['Quantity Sold'].sum()
+
+plt.figure(figsize=(14, 6))
+monthly_sales.plot(kind='line', marker='o')
+plt.title("Monthly Quantity Sold Over Time")
+plt.xlabel("Month")
+plt.ylabel("Quantity Sold")
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.show()
+
+
+## Correlation Plot ##
+
+numeric_cols = df_1.select_dtypes(include=['int64', 'float64']).columns
+plt.figure(figsize=(8, 6))
+sns.heatmap(df_1[numeric_cols].corr(), annot=True, cmap='coolwarm', fmt=".2f")
+plt.title("Correlation Heatmap")
+plt.show()
+
+
+
+```
+
+## 7️⃣ Specific Insights - DF_2
+```{python}
+# Company Name
+if 'Company Name' in df_2.columns:
+    print("\n Company Name Stats:\n", df_2['Company Name'].describe())
+    print(df_2['Company Name'].value_counts().head())
+
+# Battery Capacity
+if 'Battery Capacity' in df_2.columns:
+    print("\n Battery Capacity Stats:\n", df_2['Battery Capacity'].describe())
+    print(df_2['Battery Capacity'].value_counts().head())
+
+# Launched Price (USA)
+if 'Launched Price (USA)' in df_2.columns:
+    print("\n Launched Price Stats:\n", df_2['Launched Price (USA)'].describe())
+    print(df_2['Launched Price (USA)'].value_counts().head())
+
+# RAM
+if 'RAM' in df_2.columns:
+    print("\n RAM Stats:\n", df_2['RAM'].describe())
+    print(df_2['RAM'].value_counts().head())
+
+# Screen Size
+if 'Screen Size' in df_2.columns:
+    print("\n📱 Screen Size Stats:\n", df_2['Screen Size'].describe())
+
+```
+
+
+```{python}
+
+df_2['Company Name'].describe()
+df_2['Company Name'].value_counts()
+df_2['Company Name'].unique().sum()
+df_2['Company Name'].head()
+
+# I know the ASUS ROG Phone 7 has a 6,000 mAh Battery so this data might be invalidated.
+
+df_2['Battery Capacity'].describe()
+df_2['Battery Capacity'].value_counts()
+df_2['Battery Capacity'].unique().sum()
+df_2['Battery Capacity'].head()
+
+# ALL RANGES
+
+df_2['Launched Price (USA)'].describe()
+df_2['Launched Price (USA)'].value_counts()
+df_2['Launched Price (USA)'].unique().sum()
+df_2['Launched Price (USA)'].head()
+
+# 2011 - 2025
+df_2['Launched Year'].describe()
+df_2['Launched Year'].head()
+
+# I know that there are many devices with 16gb or more of RAM, not sure if this is represented within the dataset.
+
+df_2['RAM'].describe()
+df_2['RAM'].value_counts()
+df_2['RAM'].unique().sum()
+df_2['RAM'].head()
+
+# the same applies here with screensize, however, more data exploration is needed...
+
+df_2['Screen Size'].describe()
+# df_2['Screen Size'].value_counts()
+# df_2['Screen Size'].unique().sum()
+df_2['Screen Size'].head()
+
+
+### Exchange rate function to assess what the differences in prices actually are between the different countries.
+
+# exchange_rates = {
+#     'USD': 1.0,
+#     'INR': 0.012,
+#     'GBP': 1.27,
+#     'JPY': 0.0064
+# }
+
+# # Apply exchange rates
+# def convert_to_usd(row):
+#     rate = exchange_rates.get(row['Currency'], 1.0)
+#     return round(row['Launch Price'] * rate, 2)
+
+# # Add converted column
+# df_2['Price in USD'] = df_2.apply(convert_to_usd, axis=1)
+
+
+
+```
+
+```{python}
+# Data Exploration Phase
+
+### DATA EXPLORATION PHASE FOR PHONES made within 2011 - 2025
+## PENDING MORE UPDATES to ensure that data is represented well.
+
+
+# Function to covert the data to clean strings as it is stored in object(s)...
+
+def clean_numeric(col, unit=None):
+    # Remove non-digit and non-dot characters, then handle multiple dots by keeping only the first one
+    cleaned_series = df_2[col].astype(str).str.replace(r'[^\d.]', '', regex=True)
+    cleaned_series = cleaned_series.apply(lambda x: '.'.join(x.split('.')[:2]) if '.' in x else x)
+    cleaned_series = cleaned_series.replace('', float('nan')) # Convert empty strings to NaN
+    return pd.to_numeric(cleaned_series, errors='coerce').astype(float) # Use pd.to_numeric with errors='coerce'
+
+
+df_2['Mobile Weight (g)'] = clean_numeric('Mobile Weight')
+df_2['RAM (GB)'] = clean_numeric('RAM')
+df_2['Front Camera (MP)'] = clean_numeric('Front Camera')
+df_2['Back Camera (MP)'] = clean_numeric('Back Camera')
+df_2['Battery (mAh)'] = clean_numeric('Battery Capacity')
+df_2['Screen Size (inch)'] = clean_numeric('Screen Size')
+
+for col in ['Launched Price (Pakistan)', 'Launched Price (India)', 'Launched Price (China)',
+            'Launched Price (USA)', 'Launched Price (Dubai)']:
+    df_2[col] = clean_numeric(col)
+
+
+# OPPO leads the pack in #1, followed by APPLE, and Honor shortly after it... Samsung is in 4th...
+
+plt.figure(figsize=(10, 5))
+sns.countplot(data=df_2, y='Company Name', order=df_2['Company Name'].value_counts().head(10).index)
+plt.title("Top 10 Mobile Companies by Launch Count")
+plt.xlabel("Number of Models Launched")
+plt.ylabel("Company")
+plt.show()
+
+
+
+# Showcases the RAM VS Battery Capacity of devices with a distribution curve to analysis generally where outliers are present and where industry wide
+# Specs have more or less stayed the same...
+
+fig, ax = plt.subplots(1, 2, figsize=(14, 5))
+
+sns.histplot(df_2['RAM (GB)'], bins=15, kde=True, ax=ax[0])
+ax[0].set_title("RAM Distribution")
+
+sns.histplot(df_2['Battery (mAh)'], bins=20, kde=True, ax=ax[1], color="orange")
+ax[1].set_title("Battery Capacity Distribution")
+
+plt.tight_layout()
+plt.show()
+
+## Does a screen that is bigger or smaller translate to an increased price tag? ...
+# Well we have a general assumption based off of market trends and practices present in 2025.
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=df_2, x='Screen Size (inch)', y='Launched Price (USA)', hue='Company Name', alpha=0.7)
+plt.title("Screen Size vs USA Price")
+plt.xlabel("Screen Size (inch)")
+plt.ylabel("Price in USD")
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.show()
+
+
+
+### Price Comparisons Across Countries ###
+
+melted_prices = df_2.melt(
+    id_vars=['Model Name', 'Company Name'],
+    value_vars=[
+        'Launched Price (Pakistan)', 'Launched Price (India)',
+        'Launched Price (China)', 'Launched Price (USA)', 'Launched Price (Dubai)'
+    ],
+    var_name='Country',
+    value_name='Price'
+)
+
+plt.figure(figsize=(12, 6))
+sns.boxplot(data=melted_prices, x='Country', y='Price')
+plt.title("Launched Price Comparison by Country")
+plt.xticks(rotation=45)
+plt.show()
+
+
+
+```
+
+```{python}
+
+### The launch prices of different phones are compared between the 4 countries from within this dataset ###
+
+Countries = [
+    'Launched Price (Pakistan)', 
+    'Launched Price (India)', 
+    'Launched Price (China)', 
+    'Launched Price (USA)', 
+    'Launched Price (Dubai)'
+]
+
+# Melt to long format
+# df_prices = df_2.melt(
+#     id_vars=['Mobile Name'], 
+#     value_vars=price_columns,
+#     var_name='Country'
+# )
+
+# # Clean country names
+# df_prices['Country'] = df_prices['Country'].str.extract(r'Launched Price \((.*?)\)')
+
+# # Remove symbols and commas from price strings, convert to float
+# df_prices['Local Price'] = df_prices['Local Price'].str.replace(r'[^\d.]', '', regex=True)
+# df_prices['Local Price'] = pd.to_numeric(df_prices['Local Price'], errors='coerce')
+
+
+
+# # Define approximate exchange rates (as of 2025)
+# exchange_rates = {
+#     'Pakistan': 0.0036,   # 1 PKR = 0.0036 USD
+#     'India': 0.0120,      # 1 INR = 0.012 USD
+#     'China': 0.14,        # 1 CNY = 0.14 USD
+#     'USA': 1.0,           # USD already
+#     'Dubai': 0.27         # 1 AED = 0.27 USD
+# }
+
+# Add converted price column
+# df_prices['Price (USD)'] = df_prices.apply(
+#     lambda row: round(row['Local Price'] * exchange_rates.get(row['Country'], 1.0), 2), axis=1
+# )
+
+
+
+# plt.figure(figsize=(12, 6))
+# sns.barplot(data=df_2, x='Country', y='Price (USD)', hue='Phone Model', dodge=True)
+
+# plt.title("Mobile Launch Price Comparison by Country (in USD)")
+# plt.ylabel("Price (USD)")
+# plt.xlabel("Country")
+# plt.xticks(rotation=45)
+# plt.legend(title='Phone Model', bbox_to_anchor=(1.05, 1), loc='upper left')
+# plt.tight_layout()
+# plt.show()
+
+
+
+```
+
+
+
+
+
+
+## DF-3 ~ The Top 120 Best Selling Smartphones in 2025 ##
+
+```{python}
+
+# Only 7 features within this entire dataset, however, showcases the reality of total units sold within a year as well as by manufacturer and model of the device.
+
+df_3.describe()
+df_3.info()
+
+df_3['Rank'].head()
+df_3['Rank'].describe()
+
+# 
+df_3['Manufacturer'].info()
+df_3['Manufacturer'].describe()
+
+
+df_3['Units Sold (million )'].describe()
+df_3['Units Sold (million )'].head()
+df_3['Units Sold (million )'].tail()
+```
+
+
+
+```{python}
+
+# Overall this dataset is incomplete, as it doesn't accomondate and have all of the features that we would want to see within the years of relevancy, its moreso used for historical data which even then could be superficial as its missing key players within this space like Motorola, Oneplus, and several others.
+
+
+```
+
+
+## User Behavior Dataset & Analysis ##
+
+```{python}
+# This is a brief introspection into potential outcomes from cellphone and device usage, as well as, implications that it could pose against influencing the pro(s) and con(s) of disruptive behavior. 
+
+# 700 Participants
+# Ages 18-59 years of age
+# mean of 38 years old.
+
+
+
+df_4.describe()
+df_4.info()
+df_4.columns
+
+
+df_4['Device Model'].describe()
+df_4['Device Model'].head()
+
+df_4['Operating System'].describe()
+
+df_4['Battery Drain (mAh/day)'].describe()
+
+df_4['Age'].describe()
+
+# df_4('Screen On Time (hours/day)').info()
+
+df_4['User Behavior Class'].describe()
+
+# df_4['Battery Drain (mAh/day)'].describe()
+
+df_4['Age'].describe()
+
+```
+
+
+```{python}
+# Data Exploration and Charts that were created to analyze the dataset in conjunction with a few plugins within my IDE of choice, Visual Code Studio. 
+
+# Analysis into App Usage and Time Spent in Minutes Per Day 
+# What are the groupings, how many people were within this study, and what distinct features are present here?
+
+plt.figure(figsize=(10, 5))
+sns.histplot(df_4['App Usage Time (min/day)'], bins=30, kde=True, color='skyblue')
+plt.title("Distribution of App Usage Time (min/day)")
+plt.xlabel("Minutes per Day")
+plt.ylabel("Frequency")
+plt.grid(True)
+plt.show()
+
+# User Behavior (reported) versus Screen On Time per Device
+
+plt.figure(figsize=(10, 5))
+sns.scatterplot(data=df_4, x='App Usage Time (min/day)', y='Battery Drain (mAh/day)', hue='Operating System')
+plt.title("Battery Drain vs. App Usage Time")
+plt.xlabel("App Usage Time (min/day)")
+plt.ylabel("Battery Drain (mAh/day)")
+plt.grid(True)
+plt.show()
+
+
+## Gender Versus Screen on Time Usage (per device)
+
+plt.figure(figsize=(12, 5))
+
+# App Usage
+plt.subplot(1, 2, 1)
+sns.boxplot(x='Gender', y='App Usage Time (min/day)', data=df_4, palette='pastel')
+plt.title("App Usage Time by Gender")
+
+# Screen On Time
+plt.subplot(1, 2, 2)
+sns.boxplot(x='Gender', y='Screen On Time (hours/day)', data=df_4, palette='muted')
+plt.title("Screen On Time by Gender")
+
+plt.tight_layout()
+plt.show()
+
+
+
+# Feature Importance HeatMap
+
+plt.figure(figsize=(10, 6))
+numerical_cols = df_4.select_dtypes(include=['int64', 'float64']).columns
+sns.heatmap(df_4[numerical_cols].corr(), annot=True, cmap='coolwarm')
+plt.title("Correlation Heatmap of Numerical Features")
+plt.show()
+
+
+# Data Usage Versus the Number of Installed Apps on a device
+# NEED to explain the behavior categories and what this scatterplot grouping showcases.
+plt.figure(figsize=(10, 5))
+sns.scatterplot(data=df_4, x='Number of Apps Installed', y='Data Usage (MB/day)', hue='User Behavior Class', palette='tab10')
+plt.title("Data Usage vs. Number of Apps Installed")
+plt.xlabel("Number of Apps")
+plt.ylabel("Data Usage (MB/day)")
+plt.grid(True)
+plt.show()
+
+
+# Phone Models that are the most popular within this target demographic and dataset...
+
+plt.figure(figsize=(10, 5))
+top_devices = df_4['Device Model'].value_counts().nlargest(10)
+sns.barplot(x=top_devices.values, y=top_devices.index, palette='viridis')
+plt.title("Top 10 Most Used Device Models")
+plt.xlabel("Number of Users")
+plt.ylabel("Device Model")
+plt.show()
+
+
+# Age Distribution Versus the Behavior Classes
+
+# plt.figure(figsize=(10, 5))
+# sns.scatterplot(x='User Behavior Class', y='Age', data=df_4, palette='Accent')
+# plt.title("Age Distribution Across User Behavior Classes")
+# plt.xlabel("User Behavior Class")
+# plt.ylabel("Age")
+# plt.show()
+
+# Battery Drainage by OS as on-device
+
+# plt.figure(figsize=(10, 5))
+# sns.barplot(data=df_4, x='Operating System', y='Battery Drain (mAh/day)', estimator='mean', ci='sd', palette='deep')
+# plt.title("Average Battery Drain by Operating System")
+# plt.ylabel("Avg Battery Drain (mAh/day)")
+# plt.xlabel("Operating System")
+# plt.show()
+
+
+plt.figure(figsize=(10, 5))
+sns.scatterplot(data=df_4, x='Age', y='App Usage Time (min/day)', hue='Gender', alpha=0.7)
+plt.title("App Usage by Age and Gender")
+plt.xlabel("Age")
+plt.ylabel("App Usage Time (min/day)")
+plt.grid(True)
+plt.show()
+
+
+```
+
+## 8️⃣ Questions to Investigate
+
+1. - What phone sells the most per region, unit, and sales price-wise?
+2. - Are there any trends in screen size over the years?
+3. - What launch price differences are present from this dataset between the 4 regions?
+4. - Do users with more apps installed spend more time on their phones?
+5. - Have user bases (ie, phone manufacturer market share) seen a decline over the years, expanded, or stabilized within the United States or World as a whole?
+
+
+
+- What phone line leads in overall specs per this dataset?
+- How does launch price and date affect sales amongst the top brands?
+- Does weight have any influence in consumer trends or analysis?
+- What launch price differences are present from this dataset?
+- Are there any trends in screen size over the years?
+
+
+- Do users with more apps installed spend more time on their phones?
+- What are the behavior classes, which individuals are more susceptible to high screen usage?
+- What ages are using the most screen on usage per day; is there a dominating phone model, os, and gender where this is more pronounced?
+- If this were expanded, as well as the demographic more thoroughly represented, what could this dataset receive as a net change?
+- From the second dataset, what are the optimal trends for devices that have been sold, manufactured and designed around the base core user experience? -  Are there indicators as to what influences a device to sell versus others that are moreso targeted as a niche device?
+- Have user bases seen a decline over the years, expanded, or stabilized within the United States or World as a whole?
+
+```{python}
+df_3['Year'] = pd.to_numeric(df_3['Year'], errors='coerce')
+
+top_sales_year = df_3.groupby(['Year', 'Manufacturer', 'Model'])['Units Sold (million )'].sum().reset_index()
+
+top_5_per_year = top_sales_year.groupby('Year').apply(lambda x: x.nlargest(5, 'Units Sold (million )')).reset_index(drop=True)
+
+plt.figure(figsize=(14, 6))
+sns.barplot(data=top_5_per_year, x='Year', y='Units Sold (million )', hue='Manufacturer')
+plt.title("Top Selling Phones by Year and Manufacturer")
+plt.xlabel("Year")
+plt.ylabel("Units Sold (Million)")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+
+# Need to showcase this over the time of year, to indicate what peak times phones were being sold, how many, and what potentially caused these spikes?
+
+```
+
+
+```{python}
+sns.scatterplot(data=df_4, x='Number of Apps Installed', y='App Usage Time (min/day)', hue='Gender')
+plt.title("App Usage vs. Number of Installed Apps")
+plt.grid(True)
+plt.show()
+
+# Optional correlation
+correlation = df_4['App Usage Time (min/day)'].corr(df_4['Number of Apps Installed'])
+print(f"Correlation: {correlation:.2f}")
+
+
+
+```
+
+
+```{python}
+### I merged all of the datasets together, and eliminated duplicates later on...
+
+
+sns.set(style="whitegrid")
+
+
+plt.figure(figsize=(22, 10))
+sns.barplot(data=df_3, x='Manufacturer', y='Units Sold (million )', palette='Set2')
+plt.title("Total Units Sold by Manufacturer (2025)")
+plt.xlabel("Manufacturer")
+plt.ylabel("Units Sold (Million)")
+plt.tight_layout()
+plt.show()
+
+df_3['Year']
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style="whitegrid")
+
+plt.figure(figsize=(22, 8))
+sns.barplot(data=df_3, x='Manufacturer', y='Units Sold (million )', hue='Year', palette='Spectral')
+plt.title("Units Sold by Manufacturer Over Time")
+plt.xlabel("Manufacturer")
+plt.ylabel("Units Sold (Million)")
+plt.legend(title="Year", bbox_to_anchor=(1.02, 1), loc='upper left')
+plt.tight_layout()
+plt.show()
+
+
+
+
+```
+
+```{python}
+
+df_2['RAM_GB'] = df_2['RAM'].str.replace('GB', '', regex=False).str.strip()
+df_2['RAM_GB'] = pd.to_numeric(df_2['RAM_GB'], errors='coerce')
+
+
+df_2['Screen Size'] = df_2['Screen Size'].astype(str).str.replace(r'[^\d\.]', '', regex=True)
+df_2['Screen Size'] = pd.to_numeric(df_2['Screen Size'], errors='coerce')
+
+
+df_2['Battery Capacity'] = df_2['Battery Capacity'].astype(str).str.replace(r'[^\d\.]', '', regex=True)
+df_2['Battery Capacity'] = pd.to_numeric(df_2['Battery Capacity'], errors='coerce')
+
+summary_by_year = df_2.groupby('Launched Year').agg(
+    avg_ram_gb = ('RAM_GB', 'mean'),
+    max_ram_gb = ('RAM_GB', 'max'),
+    min_ram_gb = ('RAM_GB', 'min'),
+    avg_battery = ('Battery Capacity', 'mean'),
+    max_battery = ('Battery Capacity', 'max'),
+    min_battery = ('Battery Capacity', 'min'),
+    num_devices = ('Model Name', 'nunique')
+).reset_index()
+
+summary_by_year.round(2)
+```
+
+```{python}
+plt.figure(figsize=(10, 5))
+sns.lineplot(data=summary_by_year, x='Launched Year', y='avg_battery', marker='o', color='green')
+plt.title("Average Battery Capacity Over the Years")
+plt.ylabel("Battery (mAh)")
+plt.grid(True)
+plt.show()
+
+
+```
+
+
+1. Mobile Device Trends, Screen Size, Ram, Battery Capacity, etc?
+2. Market Share & Launch Price by Country, how much does cost differ?
+3. Influence of Apps/Phones affecting Screentime on Devices?
+---
+
+
+
